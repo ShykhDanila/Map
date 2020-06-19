@@ -26,6 +26,7 @@ public class Main {
                 String name = sc.nextLine();
                 int age = scan.nextInt();
                 Person person = new Person(name,age);
+                System.out.println(person.toString());
                // listPerson.add(new Person(name,age));
             }
             break;
@@ -37,6 +38,7 @@ public class Main {
                 String type = scan1.nextLine();
                 String nameAnimal = scan2.nextLine();
                 Animal animal = new Animal(type,nameAnimal);
+                System.out.println( animal.toString());
                 //listAnimal.add(new Animal(type,nameAnimal));
             }
             break;
@@ -68,13 +70,13 @@ public class Main {
                     //zooklub.toString();
                 System.out.println(zooklub.map.keySet());
                 System.out.println(zooklub.map.values());
-                zooklub.map.toString();
-
+                zooklub.show();
+                System.out.println(zooklub.map.toString());
 
             }
             break;
             case 7:{
-
+                System.exit(7);
             }
             break;
         }

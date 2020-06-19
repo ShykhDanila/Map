@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Zooklub {
 
@@ -20,11 +17,27 @@ public class Zooklub {
     public void setMap(Map<Person, List<Animal>> map) {
         this.map = map;
     }
+    public void show(){
+        System.out.println(getMap());
+    }
 
     @Override
     public String toString() {
         return "Zooklub{" +
                 "map=" + map.keySet() +" " + map.values() + Person.class.toString() + Animal.class.toString() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Zooklub zooklub = (Zooklub) o;
+        return map.equals(zooklub.map);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(map);
     }
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Animal {
 
@@ -12,7 +13,6 @@ public class Animal {
         this.typeAnimal = typeAnimal;
         this.nameAnimal = nameAnimal;
     }
-
 
     public String getTypeAnimal() {
         return typeAnimal;
@@ -28,6 +28,20 @@ public class Animal {
 
     public void setNameAnimal(String nameAnimal) {
         this.nameAnimal = nameAnimal;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(typeAnimal, animal.typeAnimal) &&
+                Objects.equals(nameAnimal, animal.nameAnimal);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(typeAnimal, nameAnimal);
     }
 
     @Override
