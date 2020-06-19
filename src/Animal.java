@@ -8,17 +8,10 @@ public class Animal {
 
     private String nameAnimal;
 
-    List<String> animalList = new ArrayList<>();
-
     public Animal(String typeAnimal, String nameAnimal) {
         this.typeAnimal = typeAnimal;
         this.nameAnimal = nameAnimal;
     }
-
-    public void add(){
-        animalList.add(nameAnimal);
-    }
-
 
     public String getTypeAnimal() {
         return typeAnimal;
