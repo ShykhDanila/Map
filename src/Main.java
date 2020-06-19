@@ -2,10 +2,12 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        int lich = 0;
 
-       // List<Person> listPerson = new ArrayList<>();
-        //List<Animal> listAnimal = new ArrayList<>();
-       // Map<List<Person>,List<Animal>> map = new HashMap<>();
+        List<Person> listPerson = new ArrayList<>();
+        List<Animal> listAnimal = new ArrayList<>();
+        Map<Person,List<Animal>> map = new HashMap<>();
+
 
     while (true){
         Scanner scanner = new Scanner(System.in);
@@ -21,58 +23,71 @@ public class Main {
             case 1:{
                 System.out.println("Введіть ім'я нового учасника зооклубу");
                 Scanner sc = new Scanner(System.in);
+                String name = sc.nextLine();
                 System.out.println("Введіть вік нового учасника зооклубу");
                 Scanner scan = new Scanner(System.in);
-                String name = sc.nextLine();
                 int age = scan.nextInt();
                 Person person = new Person(name,age);
-                System.out.println(person.toString());
-               // listPerson.add(new Person(name,age));
+               // map.put(person,listAnimal);
+                listPerson.add(person);
             }
             break;
             case 2:{
+
                 System.out.println("Введіть тип тваринки");
                 Scanner scan1 = new Scanner(System.in);
+                String type = scan1.nextLine();
                 System.out.println("Введіть ім'я тваринки");
                 Scanner scan2 = new Scanner(System.in);
-                String type = scan1.nextLine();
                 String nameAnimal = scan2.nextLine();
-                Animal animal = new Animal(type,nameAnimal);
-                System.out.println( animal.toString());
-                //listAnimal.add(new Animal(type,nameAnimal));
+                listAnimal.add(new Animal(type,nameAnimal));
+
+                System.out.println("Виберіть до якого учасника додати тваринку");
+                for (Person person: listPerson) {
+                    lich++;
+                    System.out.println(lich + ". " + person);
+                }
+                Scanner s = new Scanner(System.in);
+                int index = s.nextInt();
+                /*
+                System.out.println("Виберіть тваринку, яку ви хочете додати");
+                for (Animal a: listAnimal) {
+                    lich2++;
+                    System.out.println(lich2 + ". " + a);
+                }
+
+                 */
+                map.put(listPerson.get(index-1) , listAnimal);
+
             }
+            lich = 0;
             break;
             case 3:{
 
             }
             break;
             case 4:{
-
+                System.out.println("Виберіть учасника, якого потрібно видалити");
+                System.out.println(map.keySet());
             }
             break;
             case 5:{
-
+                System.out.println("Виберіть тваринку, яку потрібно видалити");
+                for (Animal s: listAnimal) {
+                    lich++;
+                    System.out.println(lich + ". " + s);
+                }
+                Scanner c = new Scanner(System.in);
+                int index = c.nextInt();
+                listAnimal.remove(index-1);
             }
+            lich = 0;
             break;
             case 6:{
-//Map<Person,List<Animal>> map = new HashMap<>();
-//map.getClass().getName();
-//map.values();
-               // System.out.println(map.keySet());
-
-
-
-                Zooklub zooklub = new Zooklub();
-
-                   // zooklub.map.keySet();
-                    //zooklub.map.values();
-                    // Map<Person,List<Animal>>
-                    //zooklub.toString();
-                System.out.println(zooklub.map.keySet());
-                System.out.println(zooklub.map.values());
-                zooklub.show();
-                System.out.println(zooklub.map.toString());
-
+               // System.out.println(map.toString());
+                for (Person p: listPerson) {
+                    System.out.println(p +" has " + map.get(p));
+                }
             }
             break;
             case 7:{
