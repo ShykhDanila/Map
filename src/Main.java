@@ -78,8 +78,9 @@ public class Main {
             }
             break;
             case 4:{
-                System.out.println("Виберіть учасника, якого потрібно видалити");
-                for (Person person : listPerson) {
+
+
+               /* for (Person person : listPerson) {
                     lich++;
                     System.out.println(lich + ". " + person);
                 }
@@ -87,11 +88,14 @@ public class Main {
                 int numberPerson = s.nextInt();
                //      map.remove(listPerson.get(numberPerson-1));
 
+
+                */
             }
+           // lich=0;
             break;
             case 5:{
 
-
+/*
                 System.out.println("Виберіть тваринку, яку потрібно видалити");
 
                 for (Person person:
@@ -110,8 +114,10 @@ public class Main {
                    map.remove(listPerson.get(index-1));
 
 
+
+ */
             }
-            lich = 0;
+           // lich = 0;
             break;
             case 6:{
                 for (Person p: listPerson) {
