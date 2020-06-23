@@ -5,9 +5,7 @@ public class Main {
         int lich = 0;
 
         List<Person> listPerson = new ArrayList<>();
-        List<Animal> listAnimal = new ArrayList<>();
         Map<Person,List<Animal>> map = new HashMap<>();
-
 
     while (true){
         Scanner scanner = new Scanner(System.in);
@@ -29,6 +27,9 @@ public class Main {
                 int age = scan.nextInt();
                 Person person = new Person(name,age);
                 listPerson.add(person);
+                map.put(person, new ArrayList<>());
+
+
             }
             break;
             case 2:{
@@ -39,7 +40,6 @@ public class Main {
                     Scanner scan2 = new Scanner(System.in);
                     String nameAnimal = scan2.nextLine();
                     Animal animal = new Animal(type, nameAnimal);
-                    listAnimal.add(animal);
 
                     System.out.println("Виберіть до якого учасника додати тваринки");
                     for (Person person : listPerson) {
@@ -48,21 +48,36 @@ public class Main {
                     }
                     Scanner s = new Scanner(System.in);
                     int index = s.nextInt();
-
-
-
-                    map.putIfAbsent(listPerson.get(index - 1), listAnimal);
-
+                    map.get(listPerson.get(index - 1)).add(animal);
                     lich = 0;
             }
 
             break;
             case 3:{
+                System.out.println("Виберіть де є тваринка, яку ви хочете видалити");
+
+                for (Person p: listPerson) {
+                    lich++;
+                    System.out.println(lich + ". " + p +" has " + map.get(p));
+                }
+                Scanner f = new Scanner(System.in);
+                int  lichAnimals = f.nextInt();
+
+               List<Animal> animals = map.get(listPerson.get(lichAnimals-1));
+                System.out.println("Виберіть яку тваринку видалити");
+
+                for (int i = 0; i < animals.size(); i++){
+                    System.out.println(i+1 + ". " + animals.get(i));
+                }
+                Scanner g = new Scanner(System.in);
+                int  indexAnimal = g.nextInt();
+                animals.remove(indexAnimal-1);
+
+                map.put(listPerson.get(lichAnimals),animals);
 
             }
             break;
             case 4:{
-                lich++;
                 System.out.println("Виберіть учасника, якого потрібно видалити");
                 for (Person person : listPerson) {
                     lich++;
@@ -70,18 +85,31 @@ public class Main {
                 }
                 Scanner s = new Scanner(System.in);
                 int numberPerson = s.nextInt();
-                map.remove(listPerson.get(numberPerson-1));
+               //      map.remove(listPerson.get(numberPerson-1));
+
             }
             break;
             case 5:{
+
+
                 System.out.println("Виберіть тваринку, яку потрібно видалити");
-                for (Animal s: listAnimal) {
-                    lich++;
-                    System.out.println(lich + ". " + s);
+
+                for (Person person:
+                     listPerson){
+                    for (Animal animal:
+                    map.get(person)){
+                        lich++;
+                        System.out.println(lich + ". " + animal);
+                    }
                 }
-                Scanner c = new Scanner(System.in);
-                int index = c.nextInt();
-                listAnimal.remove(index-1);
+                Scanner h = new Scanner(System.in);
+                int index = h.nextInt();
+
+
+                      map.get(listPerson.get(index-1)).remove(index-1);
+                   map.remove(listPerson.get(index-1));
+
+
             }
             lich = 0;
             break;
