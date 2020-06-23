@@ -31,20 +31,6 @@ public class Animal {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Animal animal = (Animal) o;
-        return Objects.equals(typeAnimal, animal.typeAnimal) &&
-                Objects.equals(nameAnimal, animal.nameAnimal);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(typeAnimal, nameAnimal);
-    }
-
-    @Override
     public String toString() {
         return "Animal{" +
                 "typeAnimal='" + typeAnimal + '\'' +
